@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Author: Nate Cheney
+# Filename: sync-dotfiles.sh
+# Description: This script provides two sync methods (upload + download). 
+# Usage: ./sync-dotfiles.sh
+# Options:
+# 	-h, --help Display this message and exit
+# 	-d, --download Download config files from this repo to ~/.config
+# 	-u, --upload Upload config files from ~/.config to this repo
+
+
+usage() {
+	cat << EOF
+Usage: ./sync-dotfiles.sh
+
+
+	-h, --help Display this message and exit
+	-d, --download Download config files from this repo to ~/.config
+	-u, --upload Upload config files from ~/.config to this repo
+
+Examples:
+	# Update system config files (download to system)
+	./sync-dotfiles.sh -d
+
+	# Update repo config files (upload to repo)
+	./sync-dotfiles.sh -u
+	
+EOF
+	exit 0
+}
+
+download() {
+    rsync -av --delete \
+        --exclude='*.cache' \
+        --exclude='*.log' \
+        --exclude='__pycache__/' \
+        --exclude='.git/' \
+        "./nvim/" "$HOME/.config/nvim/"
+}
+
+upload() {
+    rsync -av --delete \
+        --exclude='*.cache' \
+        --exclude='*.log' \
+        --exclude='__pycache__/' \
+        --exclude='.git/' \
+        "$HOME/.config/nvim/" "./nvim/"
+}
+
+# Ensure an argument was passed
+if [ $# -eq 0 ]; then
+	echo "Error: No options provided. Use the -h flag for help." >&2
+	exit 1
+fi
+
+# Handle options
+while getopts "hdu" opt; do
+	case $opt in
+		h)
+			usage 
+		;;
+		d)
+			download 
+		;;
+		u)
+			upload 
+		;;
+		\?)
+			echo "Invalid option: $OPTARG" >&2
+			exit 1
+		;;
+	esac
+done
+
