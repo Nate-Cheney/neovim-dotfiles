@@ -12,6 +12,12 @@ return require("packer").startup(function(use)
         requires = { {"nvim-lua/plenary.nvim"} }
     }
 
+    -- Markview
+    use {
+        "OXY2DEV/markview.nvim",
+        requires = { {"saghen/blink.cmp"} }
+    }
+    
     -- Theme
 	use { "catppuccin/nvim", as = "catppuccin" }
     
