@@ -31,6 +31,7 @@ EOF
 }
 
 download() {
+    mkdir -p "$HOME/.config/nvim" 
     rsync -av --delete \
         --exclude='*.cache' \
         --exclude='*.log' \
