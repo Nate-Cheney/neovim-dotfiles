@@ -32,7 +32,7 @@ EOF
 
 download() {
     if [ ! -d "$HOME/.config/nvim/" ]; then
-        mkdir -p $HOME/.config/nvim/
+        mkdir -p "$HOME/.config/nvim/"
     fi
     rsync -av --delete \
         --exclude='*.cache' \
