@@ -3,7 +3,10 @@ return require("packer").startup(function(use)
 	use { "wbthomason/packer.nvim" }
     
     -- Requred for nvim plugins
-    use "nvim-lua/plenary.nvim"
+    use { "nvim-lua/plenary.nvim" }
+
+    -- Blink 
+    use { "saghen/blink.lib" }
 
 	-- Harpoon
     use {
