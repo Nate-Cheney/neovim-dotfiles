@@ -5,8 +5,12 @@ return require("packer").startup(function(use)
     -- Requred for nvim plugins
     use { "nvim-lua/plenary.nvim" }
 
-    -- Blink 
-    use { "saghen/blink.lib" }
+    -- Blink
+    use {
+        "saghen/blink.cmp",
+        branch = "v1",
+        run = "cargo build --release"
+    }
 
 	-- Harpoon
     use {
