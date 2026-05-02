@@ -33,18 +33,8 @@ return require("packer").startup(function(use)
 		"nvim-telescope/telescope.nvim", 
 		requires = { {"nvim-lua/plenary.nvim"} }
 	}
-    
-	-- Treesitter
-    --	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-
-    --use {
-    --    'nvim-treesitter/nvim-treesitter',
-    --    run = function()
-    --        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-    --        ts_update()
-    --    end,
-    --}
-    
+   
+    -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         branch = 'main',
