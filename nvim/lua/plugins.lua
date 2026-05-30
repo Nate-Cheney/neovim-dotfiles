@@ -36,11 +36,12 @@ return require("packer").startup(function(use)
    
     -- Treesitter
     use {
-        'nvim-treesitter/nvim-treesitter',
-        branch = 'main',
-        branch = 'master',  
-        commit = "7f53486",
-        run = ':TSUpdate',
+        "nvim-treesitter/nvim-treesitter",
+        tag = "v0.9.3",
+        run = function()
+           require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+        -- run = ":TSUpdate"
     }
 	
     -- Undotree
