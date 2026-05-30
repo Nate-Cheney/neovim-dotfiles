@@ -30,18 +30,21 @@ return require("packer").startup(function(use)
     
 	-- Telescope
     use {
-        "nvim-telescope/telescope.nvim", tag = "0.1.8",
+        "nvim-telescope/telescope.nvim",
         requires = { {"nvim-lua/plenary.nvim"} }
     }
    
     -- Treesitter
+--    use {
+--        "nvim-treesitter/nvim-treesitter",
+--        tag = "v0.9.3",
+--        run = function()
+--           require("nvim-treesitter.install").update({ with_sync = true })
+--        end
+--    }
     use {
         "nvim-treesitter/nvim-treesitter",
-        tag = "v0.9.3",
-        run = function()
-           require("nvim-treesitter.install").update({ with_sync = true })
-        end,
-        -- run = ":TSUpdate"
+        run = ":TSUpdate",
     }
 	
     -- Undotree
